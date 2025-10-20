@@ -1,7 +1,9 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
-# --- Giao diện chính ---
-st.set_page_config(page_title="🥦 from broccoli 🥦", page_icon="💝", layout="centered")
+# --- Cấu hình trang ---
+st.set_page_config(page_title="🥦 from broccoli 🥦", page_icon="💗", layout="centered")
+
 # --- Tiêu đề ---
 st.markdown(
     """
@@ -15,12 +17,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# --- HTML + CSS + JS ---
 heart_html = """
 <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:250px;">
   <div class="heart" onclick="showMessage()"></div>
-  <p id="msg" style="opacity:0; transition: opacity 1.5s ease; 
+  <p id="msg" style="opacity:0; transform: translateY(20px); transition: all 1s ease; 
      color:#ba6fa0; font-family:'Segoe UI', sans-serif; font-size:18px; text-align:center; margin-top:25px;">
-     🌷 Người đẹp 20/10 vuôi vỏe 💕
+     🌷 Người đẹp 20/10 vui vẻ nha 💕
   </p>
 </div>
 
@@ -40,6 +43,7 @@ heart_html = """
   background: radial-gradient(circle at 30% 30%, #f8c8dc, #f2a2b6);
   animation: softbeat 2.5s ease-in-out infinite;
   cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,182,193,0.6);
 }
 
 .heart::before,
@@ -62,18 +66,22 @@ heart_html = """
   top: 0;
 }
 
+body {
+  background-color: #fff8fa;
+}
 </style>
 
 <script>
 function showMessage() {
   var msg = document.getElementById("msg");
   msg.style.opacity = "1";
+  msg.style.transform = "translateY(0)";
 }
 </script>
 """
 
 # --- Hiển thị ---
-st.markdown(heart_html, unsafe_allow_html=True)
+components.html(heart_html, height=400)
 
 # --- Chữ ký ---
 st.markdown(
