@@ -15,10 +15,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# --- CSS & HTML trái tim ---
 heart_html = """
-<div style="display:flex; justify-content:center; align-items:center; height:200px;">
-  <div class="heart"></div>
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:250px;">
+  <div class="heart" onclick="showMessage()"></div>
+  <p id="msg" style="opacity:0; transition: opacity 1.5s ease; 
+     color:#ba6fa0; font-family:'Segoe UI', sans-serif; font-size:18px; text-align:center; margin-top:25px;">
+     🌷 Người đẹp 20/10 vuôi vỏe 💕
+  </p>
 </div>
 
 <style>
@@ -36,6 +39,7 @@ heart_html = """
   transform: rotate(-45deg);
   background: radial-gradient(circle at 30% 30%, #f8c8dc, #f2a2b6);
   animation: softbeat 2.5s ease-in-out infinite;
+  cursor: pointer;
 }
 
 .heart::before,
@@ -57,26 +61,27 @@ heart_html = """
   left: 50px;
   top: 0;
 }
+
 </style>
+
+<script>
+function showMessage() {
+  var msg = document.getElementById("msg");
+  msg.style.opacity = "1";
+}
+</script>
 """
 
-# --- Hiển thị trái tim ---
+# --- Hiển thị ---
 st.markdown(heart_html, unsafe_allow_html=True)
 
-# --- Lời nhắn ---
+# --- Chữ ký ---
 st.markdown(
     """
-    <p style='text-align:center; color:#ba6fa0; font-family:"Segoe UI", sans-serif; font-size:18px;'>
-        🌷 all good things come to you💕
-    </p>
-    <p style='text-align:center; color:#8b5c87;'>
-        💬 Code by <a href="https://streamlit.io/cloud" target="_blank" style="color:#8b5c87; text-decoration:none;">tranthikimngan2005</a>
+    <p style='text-align:center; color:#8b5c87; font-family:"Segoe UI", sans-serif;'>
+        💬 Code by <a href="https://streamlit.io/cloud" target="_blank" 
+        style="color:#8b5c87; text-decoration:none;">tranthikimngan2005</a>
     </p>
     """,
     unsafe_allow_html=True
 )
-
-
-
-st.write("💬 **happy women's dayyyy 💕")
-st.write("🌷 Code by [tranthikimngan2005](https://streamlit.io/cloud)")
